@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 
 import { ThemeContext } from "./context/theme/theme.context";
+import { TodoListContextWrapper } from "./context/todo-list/TodoList.context";
 
 import HomePage from "./pages/HomePage";
 
@@ -11,7 +12,9 @@ function App() {
 
   return (
     <div className="App" data-theme={theme}>
-      <HomePage />
+      <TodoListContextWrapper>
+        <HomePage />
+      </TodoListContextWrapper>
     </div>
   );
 }

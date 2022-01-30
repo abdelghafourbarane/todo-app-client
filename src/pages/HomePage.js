@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+
+import { TodoListContext } from "../context/todo-list/TodoList.context";
 
 import SideBar from "../components/side-bar/SideBar";
 import ToDoItem from "../components/todo-item/ToDoItem";
 
 import styles from "./HomePage.module.scss";
 
-import { TO_DO_LIST } from "../TO_DO_LIST";
-
 function HomePage() {
+  const { todoList, addTodoItem } = useContext(TodoListContext);
   const [addField, setAddField] = useState("");
   const handleAddFieldChange = (event) => {
     setAddField(event.target.value);
+  };
+  const handleAddClick = () => {
+    if (addField) {
+      addTodoItem({
+        id: Math.floor(Math.random() * 100),
+        content: addField,
+      });
+      setAddField("");
+    }
   };
 
   return (
@@ -26,11 +36,16 @@ function HomePage() {
             value={addField}
             onChange={handleAddFieldChange}
           />
-          <AddCircleIcon className={styles.add_icon} />
+          <AddCircleIcon
+            className={styles.add_icon}
+            onClick={() => {
+              handleAddClick();
+            }}
+          />
         </div>
         <div className={styles.todo_list}>
-          {TO_DO_LIST.map(({ id, content }) => (
-            <ToDoItem key={`todo_${id}`} content={content} />
+          {todoList.map(({ id, content }) => (
+            <ToDoItem key={`todo_${id}`} content={content} todoId={id} />
           ))}
         </div>
       </div>
