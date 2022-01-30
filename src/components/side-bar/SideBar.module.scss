@@ -1,0 +1,50 @@
+.side_bar {
+  height: 100%;
+  width: 6rem;
+  border-radius: 0 2rem 2rem 0;
+  background-color: var(--background-color-secondary);
+  box-shadow: 0 2px 5px 0 rgba(2, 40, 64, 0.16);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .logo_container {
+    background-color: var(--main-purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .logo {
+      width: 3rem;
+      height: auto;
+      margin: 2rem auto;
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  .menu_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding-bottom: 2rem;
+    .mode_icon {
+      font-size: 2rem;
+      color: var(--mode-icon-color);
+      margin-bottom: -0.2rem;
+      cursor: pointer;
+      &:hover {
+        color: #d8e6f2;
+      }
+    }
+    .separator_line {
+      border: solid 1px var(--mode-icon-color);
+      width: 100%;
+    }
+    .avatar {
+      width: 3rem;
+      height: auto;
+    }
+  }
+}
